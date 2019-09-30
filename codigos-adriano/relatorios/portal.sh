@@ -1,0 +1,2 @@
+mysql -P 4321 -u casamineira_leitura -h 127.0.0.1 --password='m6!3rdH#7SK@Lwef' casamineira_portal -e 'select * from uf' > portal-uf.tsv &&
+mysql -P 4321 -u casamineira_leitura -h 127.0.0.1 --password='m6!3rdH#7SK@Lwef' casamineira_portal -e 'select * from tipo' > portal-tipo.tsv

@@ -1,0 +1,2 @@
+mysql -P 1234 -u casamineira_leitura -h 127.0.0.1 --password='m6!3rdH#7SK@Lwef' casamineira -e 'select * from tipo' > sistema-tipo.tsv &&
+mysql -P 1234 -u casamineira_leitura -h 127.0.0.1 --password='m6!3rdH#7SK@Lwef' casamineira -e 'select * from regiao' > sistema-regiao.tsv
