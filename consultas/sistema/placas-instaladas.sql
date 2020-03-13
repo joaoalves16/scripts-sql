@@ -9,7 +9,7 @@ SELECT
     imovel_placa.manutencao,
     imovel_placa.local_instalacao,
     imovel_placa.forma_entrada,
-    imovel_placa.observacao
+    REPLACE(REPLACE(REPLACE(imovel_placa.observacao, '\t', ' '), '\r', ' '), '\n', ' ') as observacao
 FROM
     imovel_placa
         JOIN
@@ -19,6 +19,8 @@ FROM
         JOIN
     usuario ON imovel_placa.usuario_agendamento_id = usuario.id
 WHERE
-    imovel_placa.criado_em > '2019-09-01 00:00:00'
+
+DATE_FORMAT(imovel_placa.criado_em, '%m/%Y') = DATE_FORMAT(NOW(), '%m/%Y')
+
 ORDER BY imovel_placa.criado_em ASC
 LIMIT 5000

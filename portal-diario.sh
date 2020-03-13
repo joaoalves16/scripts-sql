@@ -4,6 +4,6 @@ pid=$(pgrep -f '4321:')
 for consulta in "consultas/portal/*.sql"
 do
     arquivo=$(echo $consulta | grep -Eo '([a-z0-9-]+).sql$' | cut -d. -f1)
-    cat $consulta | mysql -P 4321 -u casamineira_leitura -h 127.0.0.1 --password='m6!3rdH#7SK@Lwef' casamineira_portal > relatorios/portal/$arquivo.csv
+    cat $consulta | mysql -P 4321 -u casamineira_leitura -h 127.0.0.1 --password='PJx7&4i$DYb&ZEpf' casamineira_portal > relatorios/portal/$arquivo.csv
 done
 kill $pid

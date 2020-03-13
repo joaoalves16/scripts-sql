@@ -10,14 +10,8 @@ SELECT
     imovel.publicado_em,
     imovel.desativado_em,
     imovel.id AS codigo,
-    CASE imovel.status
-        WHEN '3' THEN 'Publicado'
-        WHEN '4' THEN 'Negociado'
-        WHEN '6' THEN 'Negociado Fora'
-        WHEN '7' THEN 'Fora de negociação'
-        WHEN '8' THEN 'Reservado'
-    END AS status,
     tipo.nome AS tipo,
+    status.nome as status,
     imovel.endereco,
     imovel.numero,
     imovel.complemento,
@@ -33,6 +27,8 @@ SELECT
 FROM
     imovel
         JOIN
+    status ON imovel.status_id = status.id
+        JOIN
     bairro ON imovel.bairro_id = bairro.id
         JOIN
     tipo ON imovel.tipo_id = tipo.id
@@ -41,8 +37,7 @@ FROM
         LEFT JOIN
     usuario ON usuario_comissao_imovel.usuario_id = usuario.id
 WHERE
-    usuario_comissao_imovel.deletado_em IS NULL and
-    imovel.finalidade ='venda'
+    usuario_comissao_imovel.deletado_em IS NULL
 GROUP BY imovel.id
 ORDER BY imovel.id ASC
-LIMIT 500000 
+LIMIT 500000
