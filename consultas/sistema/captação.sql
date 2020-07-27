@@ -11,7 +11,7 @@ SELECT
     imovel.desativado_em,
     imovel.id AS codigo,
     tipo.nome AS tipo,
-    status.nome as status,
+    status.nome AS status,
     imovel.endereco,
     imovel.numero,
     imovel.complemento,
@@ -19,13 +19,15 @@ SELECT
     imovel.proprietario_nome,
     imovel.proprietario_telefone,
     imovel.proprietario_email,
-    imovel.nomeEdificio,
+    condominio.nome,
     preco / preco_avaliacao AS CM,
     imovel.criado_em,
     imovel.publicacao_solicitada_em,
     imovel.republicado_em
 FROM
     imovel
+        JOIN
+    condominio ON imovel.condominio_id = condominio.id
         JOIN
     status ON imovel.status_id = status.id
         JOIN
