@@ -1,10 +1,13 @@
 SELECT 
     usuario.nome AS secretario,
+    usuario.email,
     imovel.id,
     imovel.preco,
-    imovel.endereco,
-    imovel.numero,
-    imovel.complemento,
+    CONCAT(imovel.logradouro,
+            ', ',
+            imovel.numero,
+            '/',
+            imovel.complemento) as endereço,
     bairro.nome AS bairro,
     DATE(imovel.publicado_em) AS data
 FROM

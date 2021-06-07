@@ -1,5 +1,5 @@
 SELECT 
-    usuario.nome AS secretario,
+    usuario.nome AS usuario,
     cliente.nome AS cliente_nome,
     cliente.telefone AS cliente_telefone,
     cliente.email AS cliente_email,

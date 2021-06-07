@@ -12,13 +12,13 @@ SELECT
     imovel.id AS codigo,
     tipo.nome AS tipo,
     status.nome AS status,
-    imovel.endereco,
+    imovel.logradouro,
     imovel.numero,
     imovel.complemento,
     bairro.nome AS bairro,
-    imovel.proprietario_nome,
-    imovel.proprietario_telefone,
-    imovel.proprietario_email,
+    proprietario.nome,
+    proprietario.telefone,
+    proprietario.email,
     condominio.nome,
     preco / preco_avaliacao AS CM,
     imovel.criado_em,
@@ -34,6 +34,8 @@ FROM
     bairro ON imovel.bairro_id = bairro.id
         JOIN
     tipo ON imovel.tipo_id = tipo.id
+        JOIN
+    proprietario ON imovel.id = proprietario.imovel_id
         LEFT JOIN
     usuario_comissao_imovel ON usuario_comissao_imovel.imovel_id = imovel.id
         LEFT JOIN
